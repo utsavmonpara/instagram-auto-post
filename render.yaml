@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: instagram-auto-post
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    envVars:
+      - key: IG_APP_ID
+        sync: false
+      - key: IG_APP_SECRET
+        sync: false
+      - key: IG_USER_ID
+        sync: false
+      - key: IG_ACCESS_TOKEN
+        sync: false
+      - key: IG_PAGE_ID
+        sync: false
+      - key: ENVIRONMENT
+        value: production
